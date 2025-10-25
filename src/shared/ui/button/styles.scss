@@ -1,0 +1,91 @@
+.base-btn {
+  &.--blue {
+    --btn-bg: var(--color-blue);
+    --btn-text: var(--color-white);
+  }
+  &.--green {
+    --btn-bg: var(--color-green);
+    --btn-text: var(--color-white);
+  }
+  &.--red {
+    --btn-bg: var(--color-red);
+    --btn-text: var(--color-white);
+  }
+  &.--yellow {
+    --btn-bg: var(--color-yellow);
+    --btn-text: var(--color-black);
+  }
+
+  &.--sm {
+    padding: var(--btn-small-padding, 6px 12px);
+    font-size: var(--btn-small-size, 14px);
+    border-radius: 8px;
+  }
+  &.--md {
+    padding: var(--btn-medium-padding, 10px 14px);
+    font-size: var(--btn-medium-size, 15px);
+  }
+  &.--lg {
+    padding: var(--btn-large-padding, 14px 18px);
+    font-size: var(--btn-large-size, 16px);
+    border-radius: 12px;
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &.--filled {
+    background: var(--btn-bg);
+    color: var(--btn-text, var(--color-white));
+    border: 1px solid var(--btn-bg);
+
+    &:hover {
+      background: color-mix(in oklab, var(--btn-bg), transparent 25%);
+    }
+  }
+
+  &.--outline {
+    background: transparent;
+    color: var(--btn-bg);
+    border: 1px solid var(--btn-bg);
+
+    &:hover {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border-color: var(--btn-bg);
+    }
+  }
+
+  &.--ghost {
+    background: transparent;
+    color: var(--btn-bg);
+    border: 1px solid transparent;
+
+    &:hover {
+      background: color-mix(in oklab, var(--btn-bg), transparent 65%);
+    }
+  }
+
+  &:disabled,
+  &.--disabled,
+  &.is-disabled,
+  &[aria-disabled='true'] {
+    background: color-mix(in oklab, var(--btn-bg), transparent 65%);
+  }
+
+  &:active,
+  &.--active:not(:disabled),
+  &.is-active:not(:disabled) {
+    background: color-mix(in oklab, var(--btn-bg), white 20%);
+    transform: scale(0.95);
+
+    color: var(--btn-text, var(--color-white));
+  }
+}
