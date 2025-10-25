@@ -1,0 +1,23 @@
+@use '../api' as *;
+
+:root {
+  --text-color: #{$white};
+
+  --color-gray-light: #{$gray-light};
+  --color-gray-medium: #{$gray-medium};
+
+  --color-blue: #{$blue};
+  --color-black: #{$black};
+  --color-green: #{$green};
+  --color-red: #{$red};
+  --color-yellow: #{$yellow};
+  --color-white: #{$white};
+
+  --btn-small-padding: #{$btn-p-small};
+  --btn-medium-padding: #{$btn-p-medium};
+  --btn-large-padding: #{$btn-p-large};
+
+  --btn-small-size: #{$btn-size-small};
+  --btn-medium-size: #{$btn-size-medium};
+  --btn-large-size: #{$btn-size-large};
+}
