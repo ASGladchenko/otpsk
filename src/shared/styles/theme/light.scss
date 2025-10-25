@@ -1,0 +1,15 @@
+@use '../api' as *;
+
+[data-theme='light'] {
+  --text-color: #{$black};
+
+  --color-gray-light: #{$gray-light};
+  --color-gray-medium: #{$gray-medium};
+
+  --color-black: #{$black};
+  --color-white: #{$white};
+  --color-blue: #{$blue};
+  --color-green: #{$green};
+  --color-red: #{$red};
+  --color-yellow: #{$yellow};
+}
