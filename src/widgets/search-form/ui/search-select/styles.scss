@@ -1,0 +1,9 @@
+.search-select {
+  position: relative;
+
+  .search-select__list {
+    position: absolute;
+    top: 100%;
+    transform: translateY(2px);
+  }
+}
