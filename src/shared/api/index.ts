@@ -1,4 +1,4 @@
-import { Id } from './types';
+import { Id } from './models/types';
 import { unwrap } from './unwrap';
 import * as mock from './mock-api/api';
 
@@ -13,3 +13,5 @@ export const api = {
   startSearchPrices: (countryId: Id) =>
     unwrap(mock.startSearchPrices(countryId)),
 } as const;
+
+export type * from './models';

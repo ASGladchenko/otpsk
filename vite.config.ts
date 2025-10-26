@@ -10,6 +10,8 @@ export default defineConfig({
     alias: {
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@shared': fileURLToPath(new URL('./src/shared', import.meta.url)),
+      '@entities': fileURLToPath(new URL('./src/entities', import.meta.url)),
+      '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url)),
     },
   },
   css: {

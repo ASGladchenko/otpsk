@@ -17,7 +17,9 @@
     "paths": {
       "@shared/*": ["shared/*"],
       "@shared": ["shared/index.ts"],
-      "@pages": ["pages/index.ts"]
+      "@entities": ["entities/index.ts"],
+      "@pages": ["pages/index.ts"],
+      "@widgets": ["widgets/index.ts"]
     },
 
     "types": ["vite/client"]

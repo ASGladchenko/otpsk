@@ -9,10 +9,19 @@ $green: #32cd32;
 $yellow: #ffd700;
 $black: #000000;
 
-$btn-p-small: 6px 12px;
-$btn-p-medium: 8px 16px;
-$btn-p-large: 10px 20px;
+$btn-p-small: 2px 8px;
+$btn-p-medium: 4px 10px;
+$btn-p-large: 6px 14px;
 
 $btn-size-small: 14px;
 $btn-size-medium: 16px;
 $btn-size-large: 18px;
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

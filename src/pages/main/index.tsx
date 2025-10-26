@@ -1,28 +1,14 @@
 import { useState } from 'react';
 
-import { Input, Button, ButtonVariant, ButtonColorScheme } from '@shared';
+import { SearchForm } from '@widgets';
+import { NormalizeSearchedItemType } from '@shared';
 
 export const MainPage = () => {
-  const [value, setValue] = useState('');
+  const [active, setActive] = useState<NormalizeSearchedItemType | null>(null);
 
   return (
     <div>
-      Main Page
-      <Button
-        as="link"
-        to="asd"
-        color={ButtonColorScheme.Blue}
-        variant={ButtonVariant.Filled}
-      >
-        Main Page 123
-      </Button>
-      <Input
-        clearable
-        error="This field is required"
-        value={value}
-        placeholder="Enter text"
-        onChange={(val) => setValue(val)}
-      />
+      <SearchForm active={active} setActive={setActive} />
     </div>
   );
 };
