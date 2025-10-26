@@ -22,7 +22,6 @@ export const Button = React.forwardRef<
   (
     {
       isActive,
-      disabled,
       className,
       as = 'button',
       size = ButtonSize.Medium,
@@ -39,11 +38,11 @@ export const Button = React.forwardRef<
         variant,
         navProps,
         isActive,
-        disabled,
         className,
+        disabled: props.disabled,
       });
 
-    const blocked = disabled || props.isLoading;
+    const blocked = props.disabled || props.isLoading;
 
     const handleClick = (
       e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
