@@ -10,6 +10,8 @@ export function normalizeSearchedItem(
         id: String(item.id),
         name: item.name,
         type: item.type,
+        countryId: String(item.id),
+
         image,
         Icon: image ? undefined : Icons.Geo,
       };

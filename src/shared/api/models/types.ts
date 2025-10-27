@@ -24,8 +24,11 @@ export type ShortHotelType = {
   cityName: string;
   countryId: string;
   countryName: string;
-  type: 'hotel';
 };
+
+export interface ShortHotelWithType extends ShortHotelType {
+  type: 'hotel';
+}
 
 export interface HotelType extends ShortHotelType {
   description?: string;
@@ -35,32 +38,29 @@ export interface HotelType extends ShortHotelType {
 export type SearchedItemType =
   | ShortCountryType
   | ShortCityType
-  | ShortHotelType;
+  | ShortHotelWithType;
 
 export type NormalizeSearchedItemType = {
   id: string;
   name: string;
   type: GeoType;
   image?: string;
-  countryId?: string;
+  countryId: string;
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 
-// DELETE
-export interface Price {
-  id: Id;
-  hotel_id: Id;
-  start_date: string;
-  duration_days: number;
-  currency: 'UAH' | 'USD' | 'EUR' | string;
-  amount: number;
-}
-
 export interface SearchStart {
   token: string;
-  allowedAt: number;
+  waitUntil: string;
 }
-export type SearchStatus =
-  | { state: 'pending'; allowedAt: number }
-  | { state: 'ready'; prices: Price[] }
-  | { state: 'error'; message: string };
+
+export interface PriceType {
+  id: string;
+  hotelID: Id;
+  amount: number;
+  endDate: string;
+  startDate: string;
+  currency: 'uah' | 'usd' | 'eur' | string;
+}
+
+export type PriceResultSearchType = Record<string, PriceType>;
