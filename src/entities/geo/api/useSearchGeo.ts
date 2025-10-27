@@ -30,6 +30,14 @@ export const useSearchGeo = () => {
   };
 
   const searchGeo = useCallback(async (value: string) => {
+    if (value.length === 0) {
+      setData(null);
+      setError(null);
+      setIdle(true);
+
+      return;
+    }
+
     setLoading(true);
     setData(null);
     setError(null);

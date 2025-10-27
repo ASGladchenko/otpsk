@@ -14,6 +14,7 @@ import './styles.scss';
 
 export const SearchForm = ({
   active,
+  onSearch,
   className,
   setActive,
 }: SearchFormProps) => {
@@ -31,8 +32,7 @@ export const SearchForm = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted with:', active);
+    onSearch();
   };
 
   return (

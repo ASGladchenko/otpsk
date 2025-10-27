@@ -19,13 +19,16 @@ export const SearchSelect = ({
   activeItem,
 }: SearchSelectProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const wrapperClass = cn('search-select', className);
 
-  const handleSelect = (item: NormalizeSearchedItemType) => {
-    onSelect(item);
+  const handleSelect = (newItem: NormalizeSearchedItemType) => {
+    if (newItem.id === activeItem?.id) return;
+
+    onSelect(newItem);
     handleBlur();
   };
 
@@ -47,6 +50,20 @@ export const SearchSelect = ({
     onChange('');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.currentTarget.form?.requestSubmit();
+      e.currentTarget.blur();
+      handleBlur();
+    }
+
+    if (e.key === 'Escape') {
+      e.currentTarget.blur();
+      handleBlur();
+    }
+  };
+
   const isCountry =
     (activeItem?.type === 'country' && activeItem?.name === search.trim()) ||
     search.trim() === '';
@@ -57,9 +74,11 @@ export const SearchSelect = ({
     <div className={wrapperClass} ref={ref}>
       <Input
         clearable
+        ref={inputRef}
         onFocus={handleFocus}
         onClear={handleClear}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder="Введіть назву для пошуку"
         value={!isOpen ? activeItem?.name || search : search}
       />
