@@ -15,7 +15,7 @@ export const loadHotelsByCountryId = async (countryId: string) => {
 };
 
 export const getHotelsByCountryId = (countryId: string) => {
-  return _hotelCache?.get(countryId) || null;
+  return _hotelCache?.get(countryId) || {};
 };
 
 export const initializeHotelCache = () => {

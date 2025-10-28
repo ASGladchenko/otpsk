@@ -19,7 +19,8 @@
       "@shared": ["shared/index.ts"],
       "@entities": ["entities/index.ts"],
       "@pages": ["pages/index.ts"],
-      "@widgets": ["widgets/index.ts"]
+      "@widgets": ["widgets/index.ts"],
+      "@features": ["features/index.ts"]
     },
 
     "types": ["vite/client"]

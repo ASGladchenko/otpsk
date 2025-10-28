@@ -1,7 +1,21 @@
 @use '@shared/styles/index';
 
+html {
+  scrollbar-gutter: stable;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 25px;
+
+  @media screen and (max-width: 768px) {
+    padding: 16px;
+  }
 }

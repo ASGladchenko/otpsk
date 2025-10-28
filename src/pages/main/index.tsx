@@ -1,19 +1,45 @@
+import { useMemo } from 'react';
+
 import { SearchForm } from '@widgets';
 import { useSearchTour } from '@entities';
 
-export const MainPage = () => {
-  const { active, onSelect, searchTour, isLoading, error, data } =
-    useSearchTour();
+import { CardList } from './ui';
 
-  console.log({ data, error, isLoading });
+export const MainPage = () => {
+  const {
+    data,
+    idle,
+    error,
+    active,
+    reset,
+    lastArg,
+    onSelect,
+    isLoading,
+    searchTour,
+    isLoadingCancel,
+  } = useSearchTour();
+
+  const cardListData = useMemo(() => {
+    return data;
+  }, [data]);
 
   return (
-    <div>
-      <SearchForm active={active} setActive={onSelect} onSearch={searchTour} />
+    <>
+      <SearchForm
+        active={active}
+        onClear={reset}
+        setActive={onSelect}
+        onSearch={searchTour}
+        isLoadForm={isLoading || isLoadingCancel}
+      />
 
-      <>{error && <div>{error}</div>}</>
-      <>{isLoading && <div>Loading...</div>}</>
-      <>{!isLoading && <div>Loaded</div>}</>
-    </div>
+      <CardList
+        idle={idle}
+        data={cardListData}
+        isLoading={isLoading}
+        error={error || undefined}
+        countryId={lastArg?.countryId}
+      />
+    </>
   );
 };

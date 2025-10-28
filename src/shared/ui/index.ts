@@ -1,4 +1,5 @@
 export { Button } from './button';
+export { HotelCard } from './hotel-card';
 export { Input } from './input';
 
 export { ButtonColorScheme, ButtonSize, ButtonVariant } from './button/types';

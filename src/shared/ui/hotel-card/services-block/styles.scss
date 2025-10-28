@@ -1,0 +1,27 @@
+.hotel-card__services {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &-block {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .hotel-card__service-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      &-title {
+        font-size: 12px;
+      }
+    }
+  }
+}

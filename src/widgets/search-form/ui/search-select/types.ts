@@ -4,6 +4,8 @@ export interface SearchSelectProps {
   search: string;
   className?: string;
   isLoading?: boolean;
+  onClear?: () => void;
+  isLoadForm?: boolean;
   error?: string | null;
   onChange: (value: string) => void;
   countries?: NormalizeSearchedItemType[];

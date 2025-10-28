@@ -1,0 +1,12 @@
+.hotel-page {
+  width: 100%;
+  min-height: calc(100dvh - 50px);
+
+  &__back-button {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: calc(100dvh - 32px);
+  }
+}

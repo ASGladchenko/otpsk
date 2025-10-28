@@ -17,9 +17,11 @@ type CodedError = Error & { code?: string };
 export const useSearchTour = () => {
   const [active, setActive] = useState<NormalizeSearchedItemType | null>(null);
 
-  const [data, setData] = useState<PriceResultSearchType>({});
+  const [idle, setIdle] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<PriceResultSearchType>({});
+  const [isLoadingCancel, setIsLoadingCancel] = useState(false);
 
   const lastArg = useRef<NormalizeSearchedItemType | null>(null);
   const token = useRef<string | null>(null);
@@ -28,14 +30,16 @@ export const useSearchTour = () => {
 
   const { run, cancel } = withRetry(api.getSearchPrices);
 
-  const abortSearch = () => {
+  const abortSearch = async () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
     }
 
     if (token.current) {
-      api.stopSearchPrices(token.current || '');
+      setIsLoadingCancel(true);
+      await api.stopSearchPrices(token.current || '');
+      setIsLoadingCancel(false);
     }
 
     token.current = null;
@@ -47,6 +51,7 @@ export const useSearchTour = () => {
     if (!token.current) {
       return Promise.reject(new Error('No search token or argument'));
     }
+    setIdle(false);
 
     try {
       const result = (await run(token.current)) as Record<
@@ -110,12 +115,25 @@ export const useSearchTour = () => {
     lastArg.current = active;
   };
 
+  const reset = () => {
+    setData({});
+    setError(null);
+    setIsLoading(false);
+    lastArg.current = null;
+    abortSearch();
+    setIdle(true);
+  };
+
   return {
     data,
+    idle,
+    reset,
     error,
     active,
     isLoading,
     searchTour,
+    isLoadingCancel,
+    lastArg: lastArg.current,
     onSelect: handleChangeActive,
   };
 };
