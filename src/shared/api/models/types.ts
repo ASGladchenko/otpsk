@@ -30,9 +30,22 @@ export interface ShortHotelWithType extends ShortHotelType {
   type: 'hotel';
 }
 
+export type HotelServiceKeyType =
+  | 'wifi'
+  | 'aquapark'
+  | 'tennis_court'
+  | 'laundry'
+  | 'parking';
+
+export type HotelServiceValueType = 'yes' | 'no';
+
+export type HotelAmenitiesType = {
+  [key in HotelServiceKeyType]?: HotelServiceValueType;
+};
+
 export interface HotelType extends ShortHotelType {
-  description?: string;
-  amenities?: string[];
+  description: string;
+  services: HotelAmenitiesType;
 }
 
 export type SearchedItemType =

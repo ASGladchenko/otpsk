@@ -19,9 +19,11 @@ export const DateBlock = ({
 
           <span className="hotel-card__date-block-start">{startDate}</span>
 
-          <span className="hotel-card__date-block-interval">
-            {timeInterval}
-          </span>
+          {timeInterval && (
+            <span className="hotel-card__date-block-interval">
+              Тривалість : {timeInterval}
+            </span>
+          )}
         </div>
       );
 

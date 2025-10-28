@@ -1,4 +1,10 @@
-import { Button, HotelCard, ButtonVariant, ButtonColorScheme } from '@shared';
+import {
+  Button,
+  HotelCard,
+  ButtonVariant,
+  ButtonColorScheme,
+  formatDateIntl,
+} from '@shared';
 
 import { CardProps } from './types';
 
@@ -12,10 +18,11 @@ export const Card = ({ ...props }: CardProps) => {
       <HotelCard.Location
         cityName={props.cityName}
         countryName={props.countryName}
-        // flag="https://flagcdn.com/w320/ua.png"
         flag={props.flag}
       />
-      <HotelCard.DateBlock startDate={props.startDate} />
+      <HotelCard.DateBlock
+        startDate={formatDateIntl(props.startDate) || 'Error'}
+      />
 
       <HotelCard.Price amount={props.amount} currency={props.currency} />
 

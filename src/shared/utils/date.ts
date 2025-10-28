@@ -38,10 +38,10 @@ export const formatDays = (count: number) => {
 export const getFormattedDaysBetween = (
   startDate: string,
   endDate: string
-): string | null => {
+): string => {
   const days = diffDays(startDate, endDate);
 
-  if (days === null) return null;
+  if (days === null) return 'Error';
 
   return formatDays(Math.abs(days));
 };
