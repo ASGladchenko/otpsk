@@ -40,7 +40,12 @@ export const CardList = memo(
           !error &&
           cards &&
           cards.map((item) => (
-            <Card key={item.hotelID} flag={countryFlag} {...item} />
+            <Card
+              key={item.hotelID}
+              flag={countryFlag}
+              {...item}
+              className="card-list__item"
+            />
           ))}
       </div>
     );
