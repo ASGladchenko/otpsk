@@ -12,3 +12,10 @@ export const useCountry = () => {
 
   return { countries, isLoading, error, success };
 };
+
+export const useCountryFlag = (countryId: string | undefined) => {
+  const { getCountryFlag } = useCountryStore();
+  if (!countryId) return null;
+
+  return getCountryFlag(countryId);
+};

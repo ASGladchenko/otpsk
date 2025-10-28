@@ -15,8 +15,10 @@ import './styles.scss';
 export const SearchForm = ({
   active,
   onSearch,
+  onClear,
   className,
   setActive,
+  isLoadForm,
 }: SearchFormProps) => {
   const { countries } = useCountry();
 
@@ -42,11 +44,13 @@ export const SearchForm = ({
       <div className="search-form__controls">
         <SearchSelect
           search={search}
+          onClear={onClear}
           items={data || []}
           onChange={onChange}
           activeItem={active}
           countries={countries}
           isLoading={isLoading}
+          isLoadForm={isLoadForm}
           onSelect={handleSelect}
           error={error || undefined}
           className="search-form__select"
@@ -54,9 +58,9 @@ export const SearchForm = ({
 
         <Button
           type="submit"
-          disabled={!active}
           color={ButtonColorScheme.Blue}
           variant={ButtonVariant.Filled}
+          disabled={!active || isLoadForm}
         >
           Знайти
         </Button>

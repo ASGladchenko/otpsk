@@ -1,13 +1,14 @@
-import { HotelPage, MainPage } from '@pages';
+import { MainPage, HotelPage, LayoutMain, NotFoundPage } from '@pages';
 
 export const routes = [
   {
     id: 'root',
+    element: <LayoutMain />,
     children: [
       { path: '/', element: <MainPage /> },
-      { path: '/hotel', element: <HotelPage /> },
+      { path: '/hotel/:id', element: <HotelPage /> },
 
-      { path: '*', element: <div>404 Not Found</div> },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ];

@@ -59,21 +59,27 @@
     border: 1px solid transparent;
   }
 
-  &:hover:not(.--disabled),
-  &:hover:not(:disabled) {
-    & .--filled {
-      background: color-mix(in oklab, var(--btn-bg), transparent 25%);
-    }
+  &.--ghost:hover:is(
+      button:enabled,
+      a:not(.--disabled):not([aria-disabled='true'])
+    ) {
+    background: color-mix(in oklab, var(--btn-bg), transparent 65%);
+  }
 
-    & .--outline {
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      border-color: var(--btn-bg);
-    }
+  &.--filled:hover:is(
+      button:enabled,
+      a:not(.--disabled):not([aria-disabled='true'])
+    ) {
+    background: color-mix(in oklab, var(--btn-bg), transparent 25%);
+  }
 
-    & .--ghost {
-      background: color-mix(in oklab, var(--btn-bg), transparent 65%);
-    }
+  &.--outline:hover:is(
+      button:enabled,
+      a:not(.--disabled):not([aria-disabled='true'])
+    ) {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-color: var(--btn-bg);
   }
 
   &.--active:not(:disabled),
@@ -88,9 +94,8 @@
 
   &:disabled,
   &.--disabled,
-  &.is-disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
-    background: color-mix(in oklab, var(--btn-bg), transparent 65%);
+    background: color-mix(in oklab, var(--btn-bg), gray 65%);
   }
 }

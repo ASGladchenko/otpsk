@@ -11,11 +11,13 @@ export const SearchSelect = ({
   items,
   error,
   search,
+  onClear,
   onSelect,
   onChange,
   countries,
   isLoading,
   className,
+  isLoadForm,
   activeItem,
 }: SearchSelectProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,9 +50,15 @@ export const SearchSelect = ({
   const handleClear = () => {
     onSelect(null);
     onChange('');
+    onClear?.();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isLoadForm) {
+      e.preventDefault();
+      return;
+    }
+
     if (e.key === 'Enter') {
       e.preventDefault();
       e.currentTarget.form?.requestSubmit();
