@@ -7,9 +7,9 @@ export function normalizeSearchedItem(
     case 'country': {
       const image = item.flag || undefined;
       return {
-        id: String(item.id),
         name: item.name,
         type: item.type,
+        id: String(item.id),
         countryId: String(item.id),
 
         image,
@@ -18,20 +18,20 @@ export function normalizeSearchedItem(
     }
     case 'city': {
       return {
-        id: String(item.id),
         name: item.name,
         type: item.type,
-        countryId: item.countryId,
         Icon: Icons.City,
+        id: String(item.id),
+        countryId: item.countryId,
       };
     }
     case 'hotel': {
       const image = item.img || undefined;
       return {
-        id: String(item.id),
+        image,
         name: item.name,
         type: item.type,
-        image,
+        id: String(item.id),
         countryId: item.countryId,
         Icon: image ? undefined : Icons.Hotel,
       };
