@@ -41,9 +41,9 @@ export const CardList = memo(
           cards &&
           cards.map((item) => (
             <Card
+              {...item}
               key={item.hotelID}
               flag={countryFlag}
-              {...item}
               className="card-list__item"
             />
           ))}
