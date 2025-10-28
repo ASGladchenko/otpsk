@@ -12,7 +12,9 @@
   .search-list__items {
     list-style: none;
 
-    height: 120px;
+    min-height: 60px;
+    max-height: 80px;
+
     overflow-y: auto;
 
     padding-right: 8px;
